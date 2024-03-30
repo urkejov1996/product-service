@@ -54,6 +54,13 @@ class ProductServiceApplicationTests {
         Assertions.assertEquals(1, productRepository.findAll().size());
     }
 
+    @Test
+    void shouldGetAllProducts() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/products"))
+                .andExpect(status().isOk());
+
+    }
+
     private ProductRequest getProductRequest() {
         return ProductRequest.builder()
                 .name("iPhone 15")
@@ -61,5 +68,6 @@ class ProductServiceApplicationTests {
                 .price(BigDecimal.valueOf(1500))
                 .build();
     }
+
 
 }
